@@ -17,3 +17,5 @@ java -jar target/barcode-toolkit-<version>.jar --text 'testing ...' --output 'ou
 ```sh
 java -jar target/barcode-toolkit-<version>.jar --gui
 ```
+
+![Java CI with Maven](https://github.com/avatar21/barcode-toolkit/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)
