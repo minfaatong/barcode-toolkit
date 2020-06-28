@@ -1,11 +1,10 @@
 package com.github.minfaatong.barcode.ui.control;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.github.minfaatong.barcode.service.IBarcodeService;
 import com.github.minfaatong.barcode.service.impl.BarcodeServiceImpl;
-import com.github.minfaatong.barcode.ui.control.BarcodeCell;
 import com.github.minfaatong.barcode.ui.model.BarcodeModel;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
