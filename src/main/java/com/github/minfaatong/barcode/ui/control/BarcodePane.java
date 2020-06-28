@@ -41,16 +41,15 @@ import static java.lang.System.exit;
 
 public class BarcodePane extends Application implements Initializable {
     private static final Logger logger = LoggerFactory.getLogger(BarcodePane.class);
+    private Parent root;
     public TextArea txaText;
     public ImageView imgBarcode;
-    public Button brnSave;
-    public Button brnLoad;
-    public Button brnEncode;
-    public Button brnDecode;
-
-    public Button brnClose;
+    public Button btnSave;
+    public Button btnLoad;
+    public Button btnEncode;
+    public Button btnDecode;
+    public Button btnClose;
     public ListView lsvHistory;
-    private Parent root;
     private IBarcodeService barcodeSvc;
     private ArrayList<BufferedImage> barcodeBuffers;
     private ObservableList<BarcodeModel> lsObservedHistory;

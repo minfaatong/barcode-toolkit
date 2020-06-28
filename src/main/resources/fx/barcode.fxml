@@ -78,11 +78,11 @@
                                     <buttons>
                                         <ButtonBar prefHeight="40.0" prefWidth="200.0">
                                             <buttons>
-                                                <Button fx:id="brnSave" mnemonicParsing="false" onAction="#saveBarcode"
+                                                <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveBarcode"
                                                         text="Save"/>
                                             </buttons>
                                         </ButtonBar>
-                                        <Button fx:id="brnLoad" mnemonicParsing="false" onAction="#loadBarcode"
+                                        <Button fx:id="btnLoad" mnemonicParsing="false" onAction="#loadBarcode"
                                                 text="Load"/>
                                     </buttons>
                                 </ButtonBar>
@@ -90,11 +90,11 @@
                         </FlowPane>
                         <ButtonBar prefHeight="40.0" prefWidth="200.0">
                             <buttons>
-                                <Button fx:id="brnEncode" mnemonicParsing="false" onAction="#encodeBarcode"
+                                <Button fx:id="btnEncode" mnemonicParsing="false" onAction="#encodeBarcode"
                                         text="Encode"/>
-                                <Button fx:id="brnDecode" mnemonicParsing="false" onAction="#decodeBarcode"
+                                <Button fx:id="btnDecode" mnemonicParsing="false" onAction="#decodeBarcode"
                                         text="Decode"/>
-                                <Button fx:id="brnClose" mnemonicParsing="false" onAction="#closeApp" text="Close"/>
+                                <Button fx:id="btnClose" mnemonicParsing="false" onAction="#closeApp" text="Close"/>
                             </buttons>
                         </ButtonBar>
                     </children>
