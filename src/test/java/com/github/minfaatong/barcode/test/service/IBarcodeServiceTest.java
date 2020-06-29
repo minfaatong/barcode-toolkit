@@ -2,7 +2,6 @@ package com.github.minfaatong.barcode.test.service;
 
 import com.github.minfaatong.barcode.service.IBarcodeService;
 import com.github.minfaatong.barcode.service.impl.BarcodeServiceImpl;
-import com.github.minfaatong.barcode.utils.ResourceFileUtils;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.WriterException;
 import junit.framework.TestCase;
@@ -37,8 +36,7 @@ public class IBarcodeServiceTest extends TestCase {
         try {
             actual = barcodeService.encodeTextToBarcode(longText);
         } catch (Exception e) {
-//            e.printStackTrace();
-            logger.warn("Error while encoding text to barcode", e);
+            e.printStackTrace();
             assertTrue(e instanceof WriterException);
             assertEquals("Data too big", e.getLocalizedMessage());
         }
@@ -62,7 +60,6 @@ public class IBarcodeServiceTest extends TestCase {
         } catch (NotFoundException e) {
             logger.warn("Error while decoding barcode to text", e);
             assertTrue(e instanceof NotFoundException);
-//            assertEquals("Data too big", e.getLocalizedMessage());
         }
 
         assertEquals(null, actual);
