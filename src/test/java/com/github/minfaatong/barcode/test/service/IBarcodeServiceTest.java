@@ -2,7 +2,7 @@ package com.github.minfaatong.barcode.test.service;
 
 import com.github.minfaatong.barcode.service.IBarcodeService;
 import com.github.minfaatong.barcode.service.impl.BarcodeServiceImpl;
-import com.github.minfaatong.barcode.test.utils.TestResourceUtils;
+import com.github.minfaatong.barcode.utils.ResourceFileUtils;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.WriterException;
 import junit.framework.TestCase;
@@ -11,10 +11,10 @@ import org.slf4j.LoggerFactory;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
-import static com.github.minfaatong.barcode.test.utils.TestResourceUtils.readFromFile;
+import static com.github.minfaatong.barcode.utils.ResourceFileUtils.readFromFile;
+import static com.github.minfaatong.barcode.utils.ResourceFileUtils.toResourceUrl;
 
 public class IBarcodeServiceTest extends TestCase {
     private static final Logger logger = LoggerFactory.getLogger(IBarcodeServiceTest.class);
@@ -32,7 +32,7 @@ public class IBarcodeServiceTest extends TestCase {
     }
 
     public void test_encodeTextToBarcode_TextTooLong() throws IOException {
-        final String longText = readFromFile("longText.txt");
+        final String longText = readFromFile(toResourceUrl("longText.txt").getPath());
         BufferedImage actual = null;
         try {
             actual = barcodeService.encodeTextToBarcode(longText);
@@ -46,7 +46,7 @@ public class IBarcodeServiceTest extends TestCase {
     }
 
     public void test_decodeBarcodeToText_Ok() throws IOException, NotFoundException {
-        final BufferedImage img = ImageIO.read(TestResourceUtils.readFile("test1.jpg"));
+        final BufferedImage img = ImageIO.read(toResourceUrl("test1.jpg"));
 
         final String actual = barcodeService.decodeBarcodeToText(img);
 
@@ -54,7 +54,7 @@ public class IBarcodeServiceTest extends TestCase {
     }
 
     public void test_decodeBarcodeToText_BadBarcode() throws IOException {
-        final BufferedImage img = ImageIO.read(TestResourceUtils.readFile("test_bad.jpg"));
+        final BufferedImage img = ImageIO.read(toResourceUrl("test_bad.jpg"));
 
         String actual = null;
         try {

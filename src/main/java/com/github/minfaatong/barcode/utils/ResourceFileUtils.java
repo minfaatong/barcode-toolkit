@@ -1,17 +1,16 @@
-package com.github.minfaatong.barcode.test.utils;
+package com.github.minfaatong.barcode.utils;
 
 import java.io.*;
 import java.net.URL;
 
-public class TestResourceUtils {
+public class ResourceFileUtils {
 
-    public static final URL readFile(String path) {
-        return TestResourceUtils.class.getClassLoader().getResource(path);
+    public static final URL toResourceUrl(String path) {
+        return ResourceFileUtils.class.getClassLoader().getResource(path);
     }
 
     public static String readFromFile(String path) throws IOException {
-        URL url = readFile(path);
-        File file = new File(url.getPath());
+        File file = new File(path);
         InputStream is = new FileInputStream(file);
         BufferedReader buf = new BufferedReader(new InputStreamReader(is));
         String line = buf.readLine();
