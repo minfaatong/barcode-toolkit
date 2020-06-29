@@ -4,8 +4,13 @@ import java.io.*;
 import java.net.URL;
 
 public class TestResourceUtils {
-    public static String readFromFile(String res) throws IOException {
-        URL url = TestResourceUtils.class.getClassLoader().getResource(res);
+
+    public static final URL readFile(String path) {
+        return TestResourceUtils.class.getClassLoader().getResource(path);
+    }
+
+    public static String readFromFile(String path) throws IOException {
+        URL url = readFile(path);
         File file = new File(url.getPath());
         InputStream is = new FileInputStream(file);
         BufferedReader buf = new BufferedReader(new InputStreamReader(is));

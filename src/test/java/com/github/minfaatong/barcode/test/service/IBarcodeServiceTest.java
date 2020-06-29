@@ -3,12 +3,15 @@ package com.github.minfaatong.barcode.test.service;
 import com.github.minfaatong.barcode.service.IBarcodeService;
 import com.github.minfaatong.barcode.service.impl.BarcodeServiceImpl;
 import com.github.minfaatong.barcode.test.utils.TestResourceUtils;
+import com.google.zxing.NotFoundException;
 import com.google.zxing.WriterException;
 import junit.framework.TestCase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import static com.github.minfaatong.barcode.test.utils.TestResourceUtils.readFromFile;
@@ -30,8 +33,7 @@ public class IBarcodeServiceTest extends TestCase {
 
     public void test_encodeTextToBarcode_TextTooLong() throws IOException {
         final String longText = readFromFile("longText.txt");
-        logger.info("long text = {}", longText);
-        final BufferedImage actual;
+        BufferedImage actual = null;
         try {
             actual = barcodeService.encodeTextToBarcode(longText);
         } catch (Exception e) {
@@ -40,5 +42,29 @@ public class IBarcodeServiceTest extends TestCase {
             assertTrue(e instanceof WriterException);
             assertEquals("Data too big", e.getLocalizedMessage());
         }
+        assertEquals(null, actual);
+    }
+
+    public void test_decodeBarcodeToText_Ok() throws IOException, NotFoundException {
+        final BufferedImage img = ImageIO.read(TestResourceUtils.readFile("test1.jpg"));
+
+        final String actual = barcodeService.decodeBarcodeToText(img);
+
+        assertEquals("test", actual);
+    }
+
+    public void test_decodeBarcodeToText_BadBarcode() throws IOException {
+        final BufferedImage img = ImageIO.read(TestResourceUtils.readFile("test_bad.jpg"));
+
+        String actual = null;
+        try {
+            actual = barcodeService.decodeBarcodeToText(img);
+        } catch (NotFoundException e) {
+            logger.warn("Error while decoding barcode to text", e);
+            assertTrue(e instanceof NotFoundException);
+//            assertEquals("Data too big", e.getLocalizedMessage());
+        }
+
+        assertEquals(null, actual);
     }
 }
