@@ -15,19 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: GitHub Action for Maven & JDK 11
-#      uses: xlui/action-maven-cli@v1.1
-#      with:
-#        java-version: 1.8
-#        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-#        settings-path: ${{ github.workspace }} # location for the settings.xml file
+        uses: xlui/action-maven-cli@master
+#        with:
+#          java-version: 1.8
+          server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+          settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-#    - name: Build with Maven
-#      run: mvn -B package --file pom.xml
-
-      uses: xlui/action-maven-cli/jdk11@master
-        id: build
-        with:
-          lifecycle: 'clean install'
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
