@@ -13,12 +13,15 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          java: [ '11' ]
 
     steps:
     - uses: actions/checkout@v2
     - name: GitHub Action for Maven & JDK 11
       uses: xlui/action-maven-cli@v1.1
       with:
-        java-version: 11
+        java-version: ${{ matrix.java }}
     - name: Build with Maven
       run: mvn -B package --file pom.xml
