@@ -15,12 +15,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: GitHub Action for Maven & JDK 11
-        uses: xlui/action-maven-cli@master
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
-        id: install
-        with:
-          lifecycle: 'clean package install'
+      uses: xlui/action-maven-cli@master
+      server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+      settings-path: ${{ github.workspace }} # location for the settings.xml file
+      id: install
+      with:
+        lifecycle: 'clean package install'
 
     - na: Publish to GitHub Packages Apache Maven
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
