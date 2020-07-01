@@ -17,8 +17,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: GitHub Action for Maven & JDK 11
-    uses: xlui/action-maven-cli@v1.1
+#    uses: xlui/action-maven-cli@v1.1
 #      with:
 #        java-version: 1.8
 #    - name: Build with Maven
-#      run: mvn -B package --file pom.xml
+  #      run: mvn -B package --file pom.xml
+      uses: xlui/action-maven-cli/jdk11@master
+        id: build
+        with:
+          lifecycle: 'clean install'
