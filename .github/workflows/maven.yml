@@ -20,5 +20,5 @@ jobs:
       uses: xlui/action-maven-cli@master
 #        with:
 #          java-version: 1.8
-      - name: Build with Maven
-          run: mvn -B package --file pom.xmlaster
+        - name: Build with Maven
+            run: mvn -B package --file pom.xmlaster
