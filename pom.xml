@@ -18,6 +18,14 @@
         <maven.compiler.source>11</maven.compiler.source>
         <javafx_version>12</javafx_version>
     </properties>
+         
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+     </distributionManagement>
 
     <dependencies>
         <dependency>
